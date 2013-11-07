@@ -8,3 +8,25 @@ Problem:	Use a class to calculate price-change percentage of a given
 Algorithm:	
 ***************************************************************************/
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int main()
+{
+	class Stock
+	{
+		string symbol();
+		string name();
+		double previousClosingPrice();
+		double currentPrice();
+	public:
+		Stock (string); // constructor
+
+		
+
+	};
+
+
+}
