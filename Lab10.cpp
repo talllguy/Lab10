@@ -16,14 +16,19 @@ using namespace std;
 class Stock
 {
 public:
-	Stock(); // default constructor
-	Stock (string,string,double,double); // constructor
-	~Stock(); // destructor
+	// default constructor
+	Stock();
+	// constructor
+	Stock (string,string,double,double);
+	// destructor
+	~Stock();
 
 	string getSymbol() const;
 	string getName() const;
 	double getPCP() const; //PCP = Previous Closing Price
 	double getCP() const;
+
+	double changePercent();
 
 private:
 	string symbol;
@@ -39,17 +44,17 @@ Stock::Stock()
 }
 	
 Stock::Stock(string symbolInput, string nameInput, double previousClosingPriceInput, double currentPriceInput)
-	{
-		symbol = symbolInput;
-		name = nameInput;
-		previousClosingPrice = previousClosingPriceInput;
-		currentPrice = currentPriceInput;
-	}
+{
+	symbol = symbolInput;
+	name = nameInput;
+	previousClosingPrice = previousClosingPriceInput;
+	currentPrice = currentPriceInput;
+}
 
 Stock::~Stock()
-	{
+{
 
-	}
+}
 
 string Stock::getSymbol() const
 {
@@ -71,6 +76,11 @@ double Stock::getCP() const
 	return currentPrice;
 }
 
+double Stock::changePercent()
+{
+	return ((getCP() - getPCP()) / getPCP());
+}
+
 
 int main()
 	{
@@ -86,8 +96,10 @@ int main()
 		cout << "Enter the current price: ";
 		cin >> currentPriceInput;
 
-		
+		Stock example1(symbolInput,nameInput,previousClosingPriceInput,currentPriceInput);
 
+		cout << endl << "The price change percentage of stock " << example1.getSymbol()
+			<< " - " << example1.getName() << " is " << example1.changePercent();
 		
 		
 		return 0;
