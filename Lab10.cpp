@@ -15,39 +15,78 @@ using namespace std;
 
 class Stock
 {
+public:
+	Stock(); // default constructor
+	Stock (string,string,double,double); // constructor
+	~Stock(); // destructor
+
+	string getSymbol() const;
+	string getName() const;
+	double getPCP() const; //PCP = Previous Closing Price
+	double getCP() const;
+
+private:
 	string symbol;
 	string name;
-	int previousClosingPrice;
-	int currentPrice;
-public:
-	Stock (string,string,double,double); // constructor
-	int readPrice(int,int);
-	float changePercent() {return ((currentPrice-previousClosingPrice)/previousClosingPrice);}
-};
+	double previousClosingPrice;
+	double currentPrice;
 
-Stock::Stock(string a, string b,double c,double d)
+};
+Stock::Stock()
+{
+	currentPrice = 0;
+	previousClosingPrice = 0;
+}
+	
+Stock::Stock(string symbolInput, string nameInput, double previousClosingPriceInput, double currentPriceInput)
 	{
-		symbol = a;
-		name = b;
-		previousClosingPrice = c;
-		currentPrice = d;
+		symbol = symbolInput;
+		name = nameInput;
+		previousClosingPrice = previousClosingPriceInput;
+		currentPrice = currentPriceInput;
 	}
+
+Stock::~Stock()
+	{
+
+	}
+
+string Stock::getSymbol() const
+{
+	return symbol;
+}
+
+string Stock::getName() const
+{
+	return name;
+}
+
+double Stock::getPCP() const
+{
+	return previousClosingPrice;
+}
+
+double Stock::getCP() const
+{
+	return currentPrice;
+}
+
 
 int main()
 	{
-		string symbol, name;
-		int previousClosingPrice, currentPrice;
+		string symbolInput, nameInput;
+		int previousClosingPriceInput, currentPriceInput;
 		
 		cout << "Enter the stock symbol: ";
-		cin >> symbol;
+		cin >> symbolInput;
 		cout << "Enter the stock name: ";
-		cin >> name;
+		cin >> nameInput;
 		cout << "Enter the previous price: ";
-		cin >> previousClosingPrice;
+		cin >> previousClosingPriceInput;
 		cout << "Enter the current price: ";
-		cin >> currentPrice;
+		cin >> currentPriceInput;
 
-		Stock go(symbol,name,previousClosingPrice,currentPrice);
+		
 
 		
 		
