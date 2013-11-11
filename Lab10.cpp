@@ -78,7 +78,7 @@ double Stock::getCP() const
 
 double Stock::changePercent()
 {
-	return ((getCP() - getPCP()) / getPCP());
+	return (((getCP() - getPCP()) / getPCP()) * 100);
 }
 
 
@@ -99,7 +99,7 @@ int main()
 		Stock example1(symbolInput,nameInput,previousClosingPriceInput,currentPriceInput);
 
 		cout << endl << "The price change percentage of stock " << example1.getSymbol()
-			<< " - " << example1.getName() << " is " << example1.changePercent();
+			<< " - " << example1.getName() << " is " << example1.changePercent() << "%\n";
 		
 		
 		return 0;
