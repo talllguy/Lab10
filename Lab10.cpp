@@ -99,9 +99,21 @@ int main()
 	cout << "Enter the stock name: ";
 	cin >> nameInput;
 	cout << "Enter the previous price: ";
-	cin >> previousClosingPriceInput;
+	while ((!(cin >> previousClosingPriceInput))) //detects errors in input
+	{ 
+		cin.clear();     // Clear the error flags 
+		cin.ignore(100, '\n');    // Remove unwanted characters from buffer 
+		cout << "\aInput Error. Please enter a number only.\n"
+			 << "Enter the previous price: ";// if error, sound the alarm
+	}
 	cout << "Enter the current price: ";
-	cin >> currentPriceInput;
+		while ((!(cin >> currentPriceInput))) //detects errors in input
+	{ 
+		cin.clear();     // Clear the error flags 
+		cin.ignore(100, '\n');    // Remove unwanted characters from buffer 
+		cout << "\aInput Error. Please enter a number only.\n" // if error, sound the alarm
+			 << "Enter the current price: ";
+	}
 
 	// creates object example1 of type Stock (class) with inputs
 	Stock example1(symbolInput,nameInput,previousClosingPriceInput,currentPriceInput);
