@@ -5,7 +5,9 @@ Lab 10
 6 NOV 2013                                                  Due 11 NOV 2013
 Problem:	Use a class to calculate price-change percentage of a given
 			stock, like Google (GOOG)
-Algorithm:	
+Algorithm:	Class with four variables and constructors, etc. Also four
+			functions. All input and output in main function, and no use of
+			custom headers.
 ***************************************************************************/
 
 #include <iostream>
@@ -23,21 +25,25 @@ public:
 	// destructor
 	~Stock();
 
+	// accessing functions
 	string getSymbol() const;
 	string getName() const;
 	double getPCP() const; //PCP = Previous Closing Price
 	double getCP() const;
 
+	// calculation function
 	double changePercent();
 
 private:
+	// private variables
 	string symbol;
 	string name;
 	double previousClosingPrice;
 	double currentPrice;
 
 };
-Stock::Stock()
+
+Stock::Stock() 
 {
 	currentPrice = 0;
 	previousClosingPrice = 0;
@@ -76,33 +82,38 @@ double Stock::getCP() const
 	return currentPrice;
 }
 
-double Stock::changePercent()
+double Stock::changePercent() // simple math, so the return does it
 {
 	return (((getCP() - getPCP()) / getPCP()) * 100);
 }
 
 
 int main()
-	{
-		string symbolInput, nameInput;
-		int previousClosingPriceInput, currentPriceInput;
+{
+	string symbolInput, nameInput;
+	int previousClosingPriceInput, currentPriceInput;
 		
-		cout << "Enter the stock symbol: ";
-		cin >> symbolInput;
-		cout << "Enter the stock name: ";
-		cin >> nameInput;
-		cout << "Enter the previous price: ";
-		cin >> previousClosingPriceInput;
-		cout << "Enter the current price: ";
-		cin >> currentPriceInput;
+	// get inputs
+	cout << "Enter the stock symbol: ";
+	cin >> symbolInput;
+	cout << "Enter the stock name: ";
+	cin >> nameInput;
+	cout << "Enter the previous price: ";
+	cin >> previousClosingPriceInput;
+	cout << "Enter the current price: ";
+	cin >> currentPriceInput;
 
-		Stock example1(symbolInput,nameInput,previousClosingPriceInput,currentPriceInput);
+	// creates object example1 of type Stock (class) with inputs
+	Stock example1(symbolInput,nameInput,previousClosingPriceInput,currentPriceInput);
 
-		cout << endl << "The price change percentage of stock " << example1.getSymbol()
-			<< " - " << example1.getName() << " is " << example1.changePercent() << "%\n";
+	// for output formats
+	cout.setf(ios::fixed); 
+	cout.setf(ios::showpoint); 
+	cout.precision(2);
+
+	// output
+	cout << endl << "The price change percentage of stock " << example1.getSymbol()
+		<< " - " << example1.getName() << " is " << example1.changePercent() << "%\n";
 		
-		
-		return 0;
-	}
-
-// example: class constructor
+	return 0;
+}
